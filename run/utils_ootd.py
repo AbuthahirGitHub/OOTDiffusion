@@ -1,15 +1,15 @@
-import pdb
+import pdb #The pdb module stands for "Python Debugger" and provides a set of tools for debugging Python programs. It allows you to pause the execution of your code at specific points and inspect the values of variables, step through the code line by line, and analyze the program's flow.
 
 import numpy as np
 import cv2
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw #The PIL library is a popular library for working with images in Python. It provides a wide range of functions and classes for image manipulation, processing, and generation. By importing the Image module, you gain access to various image-related operations such as opening, saving, resizing, and applying filters to images. The ImageDraw module, on the other hand, provides functionality for drawing on images, such as lines, rectangles, and tex
 
-label_map = {
+label_map = { #The provided code snippet is from a file called utils_ootd.py. It defines a Python dictionary called label_map.This label_map dictionary is used to map labels to numerical values. Each label represents a specific item of clothing or accessory that can be detected in an outfit. The keys of the dictionary are the labels, such as "background", "hat", "hair", "sunglasses", and so on. The corresponding values are integers assigned to each label, starting from 0 and incrementing by 1 for each label.For example, the label "background" is mapped to the value 0, "hat" is mapped to 1, "hair" is mapped to 2, and so on. This mapping allows for easier handling and processing of the labels in the code.By using this label_map dictionary, you can easily convert a label to its corresponding numerical value. For instance, if you have a variable label that contains the string "hat", you can retrieve its numerical value by accessing label_map[label], which would return 1.This dictionary can be particularly useful when working with machine learning models or image recognition tasks, where labels need to be represented as numerical values for training or inference purposes.It's worth noting that the order of the labels in the dictionary is important, as it determines the numerical values assigned to each label. Therefore, if you need to add or modify labels in the label_map, make sure to maintain the desired order and update the corresponding numerical values accordingly.Overall, this label_map dictionary provides a convenient way to map clothing and accessory labels to numerical values, facilitating the handling and processing of these labels in the code.
     "background": 0,
     "hat": 1,
     "hair": 2,
     "sunglasses": 3,
-    "upper_clothes": 4,
+    "upper_clothes": 4, #This is where we're mapping which the catogories of the clothes
     "skirt": 5,
     "pants": 6,
     "dress": 7,
@@ -25,7 +25,7 @@ label_map = {
     "scarf": 17,
 }
 
-def extend_arm_mask(wrist, elbow, scale):
+def extend_arm_mask(wrist, elbow, scale): #The purpose of this function is to extend the arm mask by calculating the new position of the wrist based on the position of the elbow and a scaling factor.Inside the function, the line wrist = elbow + scale * (wrist - elbow) performs the calculation to determine the new position of the wrist. Let's break down this line further:(wrist - elbow) calculates the difference between the current position of the wrist and the elbow.scale * (wrist - elbow) multiplies the difference by the scaling factor.elbow + scale * (wrist - elbow) adds the scaled difference to the position of the elbow, resulting in the new position of the wrist.Finally, the new position of the wrist is assigned back to the wrist variable.The function then returns the updated value of wrist.To use this function, you would need to provide the current positions of the wrist and elbow, as well as the scaling factor. The function will then calculate and return the new position of the wrist based on these inputs.
   wrist = elbow + scale * (wrist - elbow)
   return wrist
 
